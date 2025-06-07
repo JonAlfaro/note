@@ -103,6 +103,7 @@ func DefaultConfig() *Config {
 			Light: "default",
 			Dark:  "default",
 		},
+		CreateEmpty: false,
 	}
 }
 
