@@ -189,9 +189,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 			timestamp := time.Now().Format("2006-01-02-150405")
 			filename := filepath.Join(currentDir, fmt.Sprintf("note-%s.md", timestamp))
+			content := ""
 
-			content := fmt.Sprintf("# New Note\n\nCreated: %s\n",
-				time.Now().Format("2006-01-02 15:04:05"))
+			// If CreateEmpty is falsey, create a default content
+			if !m.config.CreateEmpty {
+				content = fmt.Sprintf("# New Note\n\nCreated: %s\n",
+					time.Now().Format("2006-01-02 15:04:05"))
+			}
 
 			if err := os.WriteFile(filename, []byte(content), 0644); err == nil {
 				m.updateNotes()

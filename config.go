@@ -33,6 +33,7 @@ type Config struct {
 		Light string `yaml:"light"`
 		Dark  string `yaml:"dark"`
 	} `yaml:"theme"`
+	CreateEmpty bool `yaml:"create_empty"`
 }
 
 type Dimensions struct {
@@ -102,6 +103,7 @@ func DefaultConfig() *Config {
 			Light: "default",
 			Dark:  "default",
 		},
+		CreateEmpty: false,
 	}
 }
 
